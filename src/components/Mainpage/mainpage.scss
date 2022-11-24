@@ -1,9 +1,15 @@
 .super-div {
   .navbar-main-div {
     display: flex;
-    .logo {
-      height: auto;
-      width: 150px;
+    justify-content: center;
+    align-items: center;
+    .image-div {
+      margin-left: 10vw;
+      margin-top: 20px;
+      .logo {
+        height: auto;
+        width: 150px;
+      }
     }
 
     .log-sign-div {
@@ -32,7 +38,7 @@
       position: absolute;
       width: 100%;
       height: auto;
-      max-width: 500px;
+      max-width: 450px;
       bottom: 150px;
       z-index: -1;
     }
@@ -132,5 +138,21 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar-main-div {
+    flex-direction: column;
+    .image-div.image-div {
+      margin-left: 0px;
+    }
+  }
+  .log-sign-div.log-sign-div {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0px !important;
+    gap: 20px !important;
   }
 }

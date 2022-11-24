@@ -7,7 +7,9 @@ function Mainpage() {
   return (
     <div className="super-div">
       <div className="navbar-main-div">
-        <img className="logo" alt="placeholder" src={veggiexpress} />
+        <div className="image-div">
+          <img className="logo" alt="placeholder" src={veggiexpress} />
+        </div>
         <div className="log-sign-div">
           <h2 className="log-in">Log In</h2>
           <h2 className="sign-up">Sign Up</h2>
