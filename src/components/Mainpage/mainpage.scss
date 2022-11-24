@@ -1,0 +1,136 @@
+.super-div {
+  .navbar-main-div {
+    display: flex;
+    .logo {
+      height: auto;
+      width: 150px;
+    }
+
+    .log-sign-div {
+      display: flex;
+      justify-content: flex-end;
+      width: 100vw;
+      margin-right: 150px;
+      gap: 50px;
+
+      .log-in {
+        cursor: pointer;
+      }
+      .sign-up {
+        cursor: pointer;
+      }
+    }
+  }
+  .slogan-option-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+    margin-top: 50px;
+
+    .veggie-basket {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      max-width: 500px;
+      bottom: 150px;
+      z-index: -1;
+    }
+    .slogan-div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .slogan-heading1 {
+        position: absolute;
+        color: #262626;
+        font-size: 70px;
+        margin-left: 40vw;
+        margin-top: 70px;
+        white-space: nowrap;
+      }
+      .slogan-heading2 {
+        position: absolute;
+        color: #262626;
+        font-size: 40px;
+        margin-left: 40vw;
+        margin-bottom: 0px;
+        top: 150px;
+        white-space: nowrap;
+      }
+    }
+    .options-div {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 200px;
+      .single-purchase-button-wrapper {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        .single-purchase-button {
+          color: #262626;
+          font-size: 16px;
+          font-weight: bold;
+          letter-spacing: 0.5px;
+          border-radius: 50px;
+          padding: 15px;
+          background-color: #4eb550;
+          cursor: pointer;
+          transition: 0.5s ease;
+
+          &:hover {
+            background-color: #7bc47c;
+          }
+
+          &:hover + .veggie-icon1 {
+            bottom: 38px;
+          }
+        }
+        .veggie-icon1 {
+          position: absolute;
+          height: auto;
+          width: 50px;
+          transition: bottom 1s ease-out;
+          z-index: -1;
+        }
+      }
+      .membership-button-wrapper {
+        display: flex;
+        position: relative;
+        justify-content: flex-start;
+        .membership-button {
+          color: #262626;
+          font-size: 16px;
+          font-weight: bold;
+          letter-spacing: 0.5px;
+          border-radius: 50px;
+          padding: 15px;
+          background-color: #4eb550;
+          cursor: pointer;
+          transition: 0.5s ease;
+          z-index: 1;
+
+          &:hover {
+            background-color: #7bc47c;
+          }
+
+          &:hover + .veggies-wrapper {
+            bottom: 35px;
+          }
+        }
+        .veggies-wrapper {
+          position: absolute;
+          left: 40px;
+
+          .veggie-icon2 {
+            height: auto;
+            width: 50px;
+            z-index: 0;
+          }
+        }
+      }
+    }
+  }
+}
