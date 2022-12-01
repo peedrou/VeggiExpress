@@ -11,8 +11,12 @@ function Mainpage() {
           <img className="logo" alt="placeholder" src={veggiexpress} />
         </div>
         <div className="log-sign-div">
-          <h2 className="log-in">Log In</h2>
-          <h2 className="sign-up">Sign Up</h2>
+          <a href="/login" className="login-a">
+            <h2 className="log-in">Log In</h2>
+          </a>
+          <a href="/signup" className="signup-a">
+            <h2 className="sign-up">Sign Up</h2>
+          </a>
         </div>
       </div>
       <div className="slogan-option-wrapper">

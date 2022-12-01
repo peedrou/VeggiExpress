@@ -19,11 +19,19 @@
       margin-right: 150px;
       gap: 50px;
 
-      .log-in {
-        cursor: pointer;
+      .login-a {
+        text-decoration: none;
+        color: #262626;
+        .log-in {
+          cursor: pointer;
+        }
       }
-      .sign-up {
-        cursor: pointer;
+      .signup-a {
+        text-decoration: none;
+        color: #262626;
+        .sign-up {
+          cursor: pointer;
+        }
       }
     }
   }

@@ -1,0 +1,98 @@
+.main-div {
+  .images-div {
+    .veggiexpress-login-image {
+      height: auto;
+      width: 170px;
+    }
+    .fruits-div {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      .orangefruit-login-image {
+        position: absolute;
+        height: auto;
+        width: 20%;
+        left: 15%;
+        top: 35%;
+        transform: rotate(-15deg);
+      }
+      .applefruit-login-image {
+        position: absolute;
+        height: auto;
+        width: 20%;
+        right: 18%;
+        bottom: 65%;
+        transform: rotate(10deg);
+      }
+    }
+  }
+  .login-form-div {
+    border: 2.5px black solid;
+    background-color: beige;
+    border-radius: 15px;
+    max-width: 600px;
+    min-height: 400px;
+    margin: auto;
+    margin-top: 5vh;
+    .login-form-header {
+      padding-top: 10px;
+      color: #252615;
+    }
+    .login-form-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-bottom: 25px;
+
+      .login-form-input-wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        .login-form-input {
+          min-height: 45px;
+          width: 400px;
+          font-size: 18px;
+          border-radius: 5px;
+          border: gray solid 2px;
+          text-indent: 15px;
+        }
+      }
+      .login-form-link {
+        padding-top: 20px;
+        font-size: 17px;
+      }
+    }
+    .login-form-action {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      .login-form-button {
+        min-height: 45px;
+        width: 100px;
+        font-size: 14px;
+        background-color: #f3ff6e;
+        color: #252615;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .login-form-button-register {
+        min-height: 45px;
+        width: 100px;
+        background-color: #f3ff6e;
+        cursor: pointer;
+        border: black 2px solid;
+        line-height: 42px;
+        text-decoration: none;
+        border-radius: 5px;
+        .login-form-button-register-span {
+          color: #252615;
+          font-weight: 600;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
