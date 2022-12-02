@@ -1,6 +1,8 @@
 import veggie from "../../images/veggie-basket.png";
 import veggieicon from "../../images/veggie-icon.png";
 import veggiexpress from "../../images/veggiexpresss.png";
+import bananafruit from "../../images/bananafruit.png";
+import grapesfruit from "../../images/grapesfruit.png";
 import "./mainpage.scss";
 
 function Mainpage() {
@@ -13,9 +15,19 @@ function Mainpage() {
         <div className="log-sign-div">
           <a href="/login" className="login-a">
             <h2 className="log-in">Log In</h2>
+            <img
+              src={grapesfruit}
+              alt="Image not found"
+              className="grapesfruit"
+            />
           </a>
           <a href="/signup" className="signup-a">
             <h2 className="sign-up">Sign Up</h2>
+            <img
+              src={bananafruit}
+              alt="Image not found"
+              className="bananafruit"
+            />
           </a>
         </div>
       </div>

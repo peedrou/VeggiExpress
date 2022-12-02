@@ -20,17 +20,52 @@
       gap: 50px;
 
       .login-a {
+        position: relative;
         text-decoration: none;
         color: #262626;
+
         .log-in {
           cursor: pointer;
+          background-color: #5cce5e;
+          border-radius: 10px;
+          padding: 15px;
+
+          &:hover + .grapesfruit {
+            right: 100%;
+          }
+        }
+        .grapesfruit {
+          position: absolute;
+          height: auto;
+          width: 45px;
+          bottom: 25%;
+          right: 25%;
+          z-index: -1;
         }
       }
       .signup-a {
+        position: relative;
         text-decoration: none;
         color: #262626;
+
         .sign-up {
           cursor: pointer;
+          background-color: #5cce5e;
+          border-radius: 10px;
+          padding: 15px;
+
+          &:hover + .bananafruit {
+            right: -27%;
+            transform: rotate(10deg);
+          }
+        }
+        .bananafruit {
+          position: absolute;
+          height: auto;
+          width: 25px;
+          bottom: 25%;
+          right: 25%;
+          z-index: -1;
         }
       }
     }
@@ -38,17 +73,19 @@
   .slogan-option-wrapper {
     position: relative;
     display: flex;
+    border: 1px solid #5cce5e;
+    border-radius: 30px;
+    background: #5cce5e;
     flex-direction: column;
     gap: 200px;
     margin-top: 50px;
-
     .veggie-basket {
       position: absolute;
       width: 100%;
       height: auto;
       max-width: 450px;
       bottom: 150px;
-      z-index: -1;
+      z-index: 1;
     }
     .slogan-div {
       position: relative;
@@ -90,9 +127,10 @@
           letter-spacing: 0.5px;
           border-radius: 50px;
           padding: 15px;
-          background-color: #4eb550;
+          background-color: #ffffff;
           cursor: pointer;
           transition: 0.5s ease;
+          z-index: 1;
 
           &:hover {
             background-color: #7bc47c;
@@ -107,7 +145,7 @@
           height: auto;
           width: 50px;
           transition: bottom 1s ease-out;
-          z-index: -1;
+          z-index: 0;
         }
       }
       .membership-button-wrapper {
@@ -121,7 +159,7 @@
           letter-spacing: 0.5px;
           border-radius: 50px;
           padding: 15px;
-          background-color: #4eb550;
+          background-color: #ffffff;
           cursor: pointer;
           transition: 0.5s ease;
           z-index: 1;
