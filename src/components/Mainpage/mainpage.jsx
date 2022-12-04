@@ -42,23 +42,27 @@ function Mainpage() {
           </h1>
         </div>
         <div className="options-div">
-          <div className="single-purchase-button-wrapper">
-            <button className="single-purchase-button">
-              I want one basket!
-            </button>
-            <img className="veggie-icon1" src={veggieicon} />
-          </div>
-          <div className="membership-button-wrapper">
-            <button className="membership-button">
-              I want the basket every month!
-            </button>
-            <div className="veggies-wrapper">
-              <img className="veggie-icon2" src={veggieicon} />
-              <img className="veggie-icon2" src={veggieicon} />
-              <img className="veggie-icon2" src={veggieicon} />
-              <img className="veggie-icon2" src={veggieicon} />
+          <a href="/order_once" className="order-once-a">
+            <div className="single-purchase-button-wrapper">
+              <button className="single-purchase-button">
+                I want one basket!
+              </button>
+              <img className="veggie-icon1" src={veggieicon} />
             </div>
-          </div>
+          </a>
+          <a href="/order_month" className="order-month-a">
+            <div className="membership-button-wrapper">
+              <button className="membership-button">
+                I want the basket every month!
+              </button>
+              <div className="veggies-wrapper">
+                <img className="veggie-icon2" src={veggieicon} />
+                <img className="veggie-icon2" src={veggieicon} />
+                <img className="veggie-icon2" src={veggieicon} />
+                <img className="veggie-icon2" src={veggieicon} />
+              </div>
+            </div>
+          </a>
         </div>
       </div>
       <Contact />

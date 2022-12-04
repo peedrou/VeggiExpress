@@ -6,7 +6,7 @@ function Contact() {
     <div className="main-contact-div">
       <div className="heading-and-contact-div">
         <h1 className="contact-heading">
-          Want a custom order? Give us a message!
+          Want a custom order? <br /> Give us a message!
         </h1>
         <div className="email-div">
           <svg className="email-svg" viewBox="0 0 8 6">
