@@ -1,0 +1,36 @@
+.main-contact-div {
+  .heading-and-contact-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    .contact-heading {
+    }
+    .email-div {
+      display: flex;
+      gap: 20px;
+      border: 2px red solid;
+      max-width: fit-content;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 12.5px;
+      padding-bottom: 12.5px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+
+      &:hover {
+        background-color: #0c0d0c25;
+      }
+      .email-svg {
+        min-width: 34.26px;
+      }
+      .contact-email {
+        white-space: nowrap;
+        margin: 0px;
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import Contact from "../Contact/contact";
+import Footer from "../Footer/footer";
 import veggie from "../../images/veggie-basket.png";
 import veggieicon from "../../images/veggie-icon.png";
 import veggiexpress from "../../images/veggiexpresss.png";
@@ -59,6 +61,8 @@ function Mainpage() {
           </div>
         </div>
       </div>
+      <Contact />
+      <Footer />
     </div>
   );
 }
