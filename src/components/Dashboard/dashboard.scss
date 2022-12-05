@@ -1,0 +1,41 @@
+.dashboard-main-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 80px;
+  .profile-main-wrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    border-radius: 6px;
+    min-width: 400px;
+    margin-top: 25vh;
+    .profile-heading {
+    }
+    .profile-info-wrapper {
+      .email-heading {
+      }
+      .address-heading {
+      }
+    }
+  }
+  .buttons-wrapper {
+    display: flex;
+    gap: 25px;
+    .home-button {
+      background: transparent;
+      border: transparent;
+      text-decoration: underline;
+      font-size: larger;
+      cursor: pointer;
+    }
+    .logout-button {
+      background: transparent;
+      border: transparent;
+      text-decoration: underline;
+      font-size: larger;
+      cursor: pointer;
+    }
+  }
+}

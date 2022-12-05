@@ -3,15 +3,17 @@ import veggiexpress from "../../images/veggiexpresss.png";
 import orangefruit from "../../images/orangefruit.png";
 import applefruit from "../../images/applefruit.png";
 import { useAuth } from "../../contexts/AuthContext.js";
+import { useNavigate } from "react-router-dom";
 import "./signup.scss";
 
 function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const signup = useAuth();
+  const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,6 +25,7 @@ function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      navigate("/dashboard");
     } catch {
       setError("Failed to create an account, please try again later");
     }
@@ -80,13 +83,11 @@ function Signup() {
                 required
               ></input>
             </div>
-            <button
-              disabled={loading}
-              className="signup-form-register-button"
-              type="submit"
-            >
-              Register
-            </button>
+            {loading == false && (
+              <button className="signup-form-register-button" type="submit">
+                Register
+              </button>
+            )}
             <a href="/login" className="signup-form-return">
               Already have an account? Log in
             </a>

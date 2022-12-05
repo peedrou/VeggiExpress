@@ -5,33 +5,45 @@ import veggieicon from "../../images/veggie-icon.png";
 import veggiexpress from "../../images/veggiexpresss.png";
 import bananafruit from "../../images/bananafruit.png";
 import grapesfruit from "../../images/grapesfruit.png";
+import { useState } from "react";
 import "./mainpage.scss";
 
 function Mainpage() {
+  const [logged, setLogged] = useState(false);
+
   return (
     <div className="super-div">
       <div className="navbar-main-div">
         <div className="image-div">
           <img className="logo" alt="placeholder" src={veggiexpress} />
         </div>
-        <div className="log-sign-div">
-          <a href="/login" className="login-a">
-            <h2 className="log-in">Log In</h2>
-            <img
-              src={grapesfruit}
-              alt="Image not found"
-              className="grapesfruit"
-            />
-          </a>
-          <a href="/signup" className="signup-a">
-            <h2 className="sign-up">Sign Up</h2>
-            <img
-              src={bananafruit}
-              alt="Image not found"
-              className="bananafruit"
-            />
-          </a>
-        </div>
+        {logged == false && (
+          <div className="log-sign-div">
+            <a href="/login" className="login-a">
+              <h2 className="log-in">Log In</h2>
+              <img
+                src={grapesfruit}
+                alt="Image not found"
+                className="grapesfruit"
+              />
+            </a>
+            <a href="/signup" className="signup-a">
+              <h2 className="sign-up">Sign Up</h2>
+              <img
+                src={bananafruit}
+                alt="Image not found"
+                className="bananafruit"
+              />
+            </a>
+          </div>
+        )}
+        {logged && (
+          <div className="logged-in-div">
+            <a href="/dashboard" className="loggen-in-a">
+              <h2>Logged In</h2>
+            </a>
+          </div>
+        )}
       </div>
       <div className="slogan-option-wrapper">
         <img className="veggie-basket" src={veggie} />
