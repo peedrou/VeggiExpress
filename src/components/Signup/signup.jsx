@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import veggiexpress from "../../images/veggiexpresss.png";
 import orangefruit from "../../images/orangefruit.png";
 import applefruit from "../../images/applefruit.png";
+import { createUserDocument } from "../../firebase";
 import { useAuth } from "../../contexts/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 import "./signup.scss";
@@ -24,7 +25,11 @@ function Signup() {
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await signup(emailRef.current.value, passwordRef.current.value).then(
+        async (cred) => {
+          await createUserDocument(cred);
+        }
+      );
       navigate("/dashboard");
     } catch {
       setError("Failed to create an account, please try again later");

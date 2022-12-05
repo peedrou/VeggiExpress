@@ -4,6 +4,7 @@ import Signup from "./components/Signup/signup";
 import Dashboard from "./components/Dashboard/dashboard";
 import OrderOnce from "./components/Orderonce/orderOnce";
 import OrderMonth from "./components/Ordermonth/orderMonth";
+import Address from "./components/Address/address";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/order_once" element={<OrderOnce />} />
             <Route path="/order_month" element={<OrderMonth />} />
+            <Route path="/address" element={<Address />} />
           </Routes>
         </div>
       </Router>

@@ -31,8 +31,13 @@ function Dashboard() {
           <h3 className="email-heading">
             <b>Email:</b> {currentUser.email}
           </h3>
-          <h3 className="address-heading">
-            <b>Address:</b>
+          <a href="/address" className="address-a">
+            <h3 className="address-heading">
+              <b>Address:</b>
+            </h3>
+          </a>
+          <h3 className="orders-heading">
+            <b>My Orders:</b>
           </h3>
         </div>
       </div>
