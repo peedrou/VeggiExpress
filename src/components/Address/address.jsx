@@ -1,9 +1,13 @@
 import React from "react";
+import veggiexpress from "../../images/veggiexpresss.png";
 import "./address.scss";
 
 function Address() {
   return (
     <div className="address-main-div">
+      <a href="/">
+        <img className="logo" src={veggiexpress} />
+      </a>
       <div className="address-wrapper">
         <div className="current-address-wrapper">
           <div className="current-address-heading-div">

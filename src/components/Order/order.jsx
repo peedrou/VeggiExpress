@@ -1,9 +1,15 @@
 import React from "react";
-import "./orderOnce.scss";
+import { usePrice } from "../../contexts/priceContext";
+import veggiexpress from "../../images/veggiexpresss.png";
+import "./order.scss";
 
-function OrderOnce() {
+function Order() {
+  const price = usePrice();
   return (
     <div className="order-main-div">
+      <a href="/">
+        <img className="logo" src={veggiexpress} />
+      </a>
       <div className="info-wrapper">
         <div className="user-info">
           <h3 className="profile-heading">Profile: </h3>
@@ -12,10 +18,10 @@ function OrderOnce() {
         </div>
         <div className="checkout-wrapper">
           <div className="checkout-info-wrapper">
-            <h3 className="summary-heading">You are ordering:</h3>
             <div className="product-and-price-wrapper">
+              <h3 className="summary-heading">You are ordering:</h3>
               <h3 className="product-info">One Basket</h3>
-              <h3 className="price-info">4.99$</h3>
+              <h3 className="price-info">{price}$</h3>
             </div>
             <button className="checkout-button">Purchase Now</button>
           </div>
@@ -25,4 +31,4 @@ function OrderOnce() {
   );
 }
 
-export default OrderOnce;
+export default Order;

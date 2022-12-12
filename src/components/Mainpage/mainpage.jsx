@@ -5,11 +5,14 @@ import veggieicon from "../../images/veggie-icon.png";
 import veggiexpress from "../../images/veggiexpresss.png";
 import bananafruit from "../../images/bananafruit.png";
 import grapesfruit from "../../images/grapesfruit.png";
+import React from "react";
 import { useState } from "react";
+import { usePriceUpdate } from "../../contexts/priceContext";
 import "./mainpage.scss";
 
 function Mainpage() {
   const [logged, setLogged] = useState(false);
+  const PriceChange = usePriceUpdate();
 
   return (
     <div className="super-div">
@@ -54,17 +57,23 @@ function Mainpage() {
           </h1>
         </div>
         <div className="options-div">
-          <a href="/order_once" className="order-once-a">
+          <a href="/order" className="order-once-a">
             <div className="single-purchase-button-wrapper">
-              <button className="single-purchase-button">
+              <button
+                className="single-purchase-button"
+                onClick={() => PriceChange(4.99)}
+              >
                 I want one basket!
               </button>
               <img className="veggie-icon1" src={veggieicon} />
             </div>
           </a>
-          <a href="/order_month" className="order-month-a">
+          <a href="/order" className="order-month-a">
             <div className="membership-button-wrapper">
-              <button className="membership-button">
+              <button
+                className="membership-button"
+                onClick={() => PriceChange(2.99)}
+              >
                 I want the basket every month!
               </button>
               <div className="veggies-wrapper">

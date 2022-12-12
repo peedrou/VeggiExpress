@@ -15,24 +15,10 @@ export const auth = app.auth();
 export const firestore = firebase.firestore();
 export default app;
 
-export const createUserDocument = async (cred) => {
-  if (!cred) return;
-  console.log(cred.uid);
+export async function createUserDocument(user) {
+  const firestore = firebase.firestore();
 
-  const userRef = firestore.doc(`users/${cred.uid}`);
+  const data = { UniqueID: user.uid, DateCreated: new Date() };
 
-  const snapshot = await userRef.get();
-
-  if (!snapshot.exists) {
-    const { email } = cred;
-
-    try {
-      userRef.set({
-        email,
-        createdAt: new Date(),
-      });
-    } catch {
-      console.log("rip");
-    }
-  }
-};
+  return firestore.collection("users").doc(user.uid).set(data);
+}

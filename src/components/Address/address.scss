@@ -1,6 +1,14 @@
 .address-main-div {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
+  .logo {
+    height: auto;
+    width: 150px;
+    padding-top: 20px;
+  }
   .address-wrapper {
     display: flex;
     flex-direction: column;
@@ -52,13 +60,12 @@
         .submit-button {
           max-width: 200px;
           background-color: transparent;
-          border-radius: 10px;
           padding: 9px;
           cursor: pointer;
           border: 2px solid grey;
           transition: 0.5s;
           &:hover {
-            padding: 20px;
+            border-radius: 10px;
             background-color: rgba(216, 0, 0, 0.534);
           }
         }
