@@ -1,8 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import veggiexpress from "../../images/veggiexpresss.png";
+import { useAuth } from "../../contexts/AuthContext.js";
+import { firestore } from "../../firebase.js";
+import { useState } from "react";
 import "./address.scss";
 
 function Address() {
+  const { currentUser } = useAuth();
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const db = firestore;
+
+  useEffect(() => {
+    let street;
+    let city;
+    let country;
+    let postalCode;
+    async function GetAddressData() {
+      const userRef = db.collection("users").doc(currentUser.uid);
+
+      await userRef.get("Street").then((doc) => {
+        street = doc.data()["Street"];
+      });
+      await userRef.get("City").then((doc) => {
+        city = doc.data()["City"];
+      });
+      await userRef.get("Country").then((doc) => {
+        country = doc.data()["Country"];
+      });
+      await userRef.get("PostalCode").then((doc) => {
+        postalCode = doc.data()["PostalCode"];
+      });
+
+      setStreet(street);
+      setCity(city);
+      setCountry(country);
+      setPostalCode(postalCode);
+    }
+    GetAddressData();
+  }, []);
+
   return (
     <div className="address-main-div">
       <a href="/">
@@ -16,16 +55,16 @@ function Address() {
             </h3>
           </div>
           <h4 className="current-heading">
-            <b>Street:</b>
+            <b>Street: {street}</b>
           </h4>
           <h4 className="current-heading">
-            <b>Postal Code:</b>
+            <b>Postal Code: {postalCode}</b>
           </h4>
           <h4 className="current-heading">
-            <b>City:</b>
+            <b>City: {city}</b>
           </h4>
           <h4 className="current-heading">
-            <b>Country:</b>
+            <b>Country: {country}</b>
           </h4>
         </div>
         <div className="new-address-wrapper">
