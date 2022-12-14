@@ -7,12 +7,25 @@ import bananafruit from "../../images/bananafruit.png";
 import grapesfruit from "../../images/grapesfruit.png";
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import { usePriceUpdate } from "../../contexts/priceContext";
 import "./mainpage.scss";
 
 function Mainpage() {
+  const { currentUser } = useAuth();
   const [logged, setLogged] = useState(false);
   const PriceChange = usePriceUpdate();
+
+  useEffect(() => {
+    try {
+      if (currentUser.email != null) {
+        setLogged(true);
+      }
+    } catch {
+      console.log(1);
+    }
+  }, []);
 
   return (
     <div className="super-div">

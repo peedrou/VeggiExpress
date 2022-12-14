@@ -20,6 +20,8 @@ function Dashboard() {
     }
   }
 
+  console.log(currentUser);
+
   return (
     <div className="dashboard-main-div">
       <div className="profile-main-wrapper">
