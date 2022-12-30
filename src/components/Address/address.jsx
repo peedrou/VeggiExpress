@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import veggiexpress from "../../images/veggiexpresss.png";
 import { useAuth } from "../../contexts/AuthContext.js";
 import { firestore } from "../../firebase.js";
@@ -12,6 +12,11 @@ function Address() {
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const db = firestore;
+
+  const streetRef = useRef(null);
+  const cityRef = useRef(null);
+  const countryRef = useRef(null);
+  const postalRef = useRef(null);
 
   useEffect(() => {
     let street;
@@ -42,6 +47,27 @@ function Address() {
     GetAddressData();
   }, []);
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const docRef = db.collection("users").doc(currentUser.uid);
+      const newStreet = streetRef.current.value;
+      const newCity = cityRef.current.value;
+      const newPostal = postalRef.current.value;
+      const newCountry = countryRef.current.value;
+      const updatedData = {
+        City: newCity,
+        Country: newCountry,
+        PostalCode: newPostal,
+        Street: newStreet,
+      };
+      console.log(updatedData);
+      await docRef.update(updatedData);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="address-main-div">
       <a href="/">
@@ -71,30 +97,34 @@ function Address() {
           <h3 className="new-address-heading">
             <b>Change Address</b>
           </h3>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-main-div">
               <div className="form-div-info">
                 <input
                   type="text"
                   placeholder="Street"
                   className="input-info1"
+                  ref={streetRef}
                 />
                 <div className="postal-city-wrapper">
                   <input
                     type="text"
                     placeholder="Postal Code"
                     className="input-info-postal"
+                    ref={postalRef}
                   />
                   <input
                     type="text"
                     placeholder="City"
                     className="input-info-city"
+                    ref={cityRef}
                   />
                 </div>
                 <input
                   type="text"
                   placeholder="Country"
                   className="input-info1"
+                  ref={countryRef}
                 />
               </div>
               <button type="submit" className="submit-button">
