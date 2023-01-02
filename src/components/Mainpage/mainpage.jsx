@@ -31,10 +31,10 @@ function Mainpage() {
     window.location.reload();
   }
 
-  function handleRedirect(value) {
+  function handleRedirect(value, product) {
     Navigate({
       pathname: "/order",
-      search: `?value=${value}`,
+      search: `?value=${value}&product=${product}`,
     });
   }
 
@@ -88,7 +88,10 @@ function Mainpage() {
           </h1>
         </div>
         <div className="options-div">
-          <a onClick={() => handleRedirect(4.99)} className="order-once-a">
+          <a
+            onClick={() => handleRedirect(4.99, "One Basket")}
+            className="order-once-a"
+          >
             <div className="single-purchase-button-wrapper">
               <button className="single-purchase-button">
                 I want one basket!
@@ -96,7 +99,10 @@ function Mainpage() {
               <img className="veggie-icon1" src={veggieicon} />
             </div>
           </a>
-          <a onClick={() => handleRedirect(2.99)} className="order-month-a">
+          <a
+            onClick={() => handleRedirect(2.99, "Monthly Delivery")}
+            className="order-month-a"
+          >
             <div className="membership-button-wrapper">
               <button className="membership-button">
                 I want the basket every month!

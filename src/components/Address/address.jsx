@@ -63,6 +63,7 @@ function Address() {
       };
       console.log(updatedData);
       await docRef.update(updatedData);
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }

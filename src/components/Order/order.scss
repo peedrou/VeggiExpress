@@ -24,7 +24,28 @@
       }
       .address-heading {
       }
-      .payment-method-heading {
+      .payment-method-div {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .payment-method-heading {
+        }
+        .payment-image-div {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          border: 1px solid grey;
+          border-radius: 0.25rem;
+          .choose-payment {
+            margin: 0px;
+            padding: 10px;
+          }
+          .arrow-image {
+            width: 15px;
+            margin-right: 10px;
+            transition: 0.5s ease;
+          }
+        }
       }
     }
     .checkout-wrapper {
@@ -33,10 +54,6 @@
           display: flex;
           gap: 50px;
           .summary-heading {
-          }
-          .product-info {
-          }
-          .price-info {
           }
         }
         .checkout-button {
