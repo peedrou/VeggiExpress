@@ -6,16 +6,15 @@ import veggiexpress from "../../images/veggiexpresss.png";
 import bananafruit from "../../images/bananafruit.png";
 import grapesfruit from "../../images/grapesfruit.png";
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { usePriceUpdate } from "../../contexts/priceContext";
+import { useNavigate } from "react-router-dom";
 import "./mainpage.scss";
 
 function Mainpage() {
   const { currentUser, logout } = useAuth();
   const [logged, setLogged] = useState(false);
-  const PriceChange = usePriceUpdate();
+  const Navigate = useNavigate();
 
   useEffect(() => {
     try {
@@ -30,6 +29,13 @@ function Mainpage() {
   async function handleLogout() {
     await logout();
     window.location.reload();
+  }
+
+  function handleRedirect(value) {
+    Navigate({
+      pathname: "/order",
+      search: `?value=${value}`,
+    });
   }
 
   return (
@@ -82,23 +88,17 @@ function Mainpage() {
           </h1>
         </div>
         <div className="options-div">
-          <a href="/order" className="order-once-a">
+          <a onClick={() => handleRedirect(4.99)} className="order-once-a">
             <div className="single-purchase-button-wrapper">
-              <button
-                className="single-purchase-button"
-                onClick={() => PriceChange(4.99)}
-              >
+              <button className="single-purchase-button">
                 I want one basket!
               </button>
               <img className="veggie-icon1" src={veggieicon} />
             </div>
           </a>
-          <a href="/order" className="order-month-a">
+          <a onClick={() => handleRedirect(2.99)} className="order-month-a">
             <div className="membership-button-wrapper">
-              <button
-                className="membership-button"
-                onClick={() => PriceChange(2.99)}
-              >
+              <button className="membership-button">
                 I want the basket every month!
               </button>
               <div className="veggies-wrapper">

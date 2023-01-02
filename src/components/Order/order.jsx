@@ -1,10 +1,23 @@
 import React from "react";
-import { usePrice } from "../../contexts/priceContext";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import veggiexpress from "../../images/veggiexpresss.png";
 import "./order.scss";
 
 function Order() {
-  const price = usePrice();
+  const [price, setPrice] = useState(0);
+  const location = useLocation();
+  const finalPrice = new URLSearchParams(location.search).get("value");
+
+  useEffect(() => {
+    if (finalPrice == 2.99 || finalPrice == 4.99) {
+      setPrice(finalPrice);
+    } else {
+      setPrice("Do not alter the URL");
+    }
+  }, []);
+
   return (
     <div className="order-main-div">
       <a href="/">
