@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { firestore } from "../../firebase.js";
 import veggiexpress from "../../images/veggiexpresss.png";
 import arrow from "../../images/arrow.png";
+import card from "../../images/credit-card.png";
 import "./order.scss";
 
 function Order() {
@@ -13,6 +14,8 @@ function Order() {
   const [finalAddress, setFinalAddress] = useState("");
   const [price, setPrice] = useState(0);
   const [product, setProduct] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("Choose a payment method");
+  const [loadError, setLoadError] = useState(false);
   const db = firestore;
   const location = useLocation();
   const finalPrice = new URLSearchParams(location.search).get("value");
@@ -56,6 +59,26 @@ function Order() {
     fullAddress();
   }, []);
 
+  function handlePaymentMethodChange(card) {
+    setPaymentMethod(card);
+    setIsUpsideDown(!isUpsideDown);
+  }
+
+  async function completeOrder() {
+    if (paymentMethod != "Choose a payment method") {
+      try {
+        const docRef = db.collection("users").doc(currentUser.uid);
+        const updatedData = { Order: product };
+        await docRef.update(updatedData);
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      setLoadError(true);
+    }
+  }
+
   return (
     <div className="order-main-div">
       <a href="/">
@@ -71,7 +94,7 @@ function Order() {
               className="payment-image-div"
               onClick={() => setIsUpsideDown(!isUpsideDown)}
             >
-              <h4 className="choose-payment">Choose a payment method</h4>
+              <h4 className="choose-payment">{paymentMethod}</h4>
               <img
                 alt="arrow"
                 className="arrow-image"
@@ -81,6 +104,50 @@ function Order() {
                 src={arrow}
               />
             </div>
+            {isUpsideDown && (
+              <div className="payment-method-cards-div">
+                <div
+                  className="credit-card-div"
+                  onClick={() => handlePaymentMethodChange("XXXX-XXXXX918")}
+                >
+                  <img
+                    alt="credit card image"
+                    className="credit-card-image"
+                    src={card}
+                  />
+                  <h6 className="card">XXXX-XXXXX918</h6>
+                </div>
+                <div
+                  className="credit-card-div"
+                  onClick={() => handlePaymentMethodChange("XXXX-XXXXX756")}
+                >
+                  <img
+                    alt="credit card image"
+                    className="credit-card-image"
+                    src={card}
+                  />
+                  <h6 className="card">XXXX-XXXXX756</h6>
+                </div>
+                <div
+                  className="credit-card-div"
+                  onClick={() => handlePaymentMethodChange("XXXX-XXXXX113")}
+                >
+                  <img
+                    alt="credit card image"
+                    className="credit-card-image"
+                    src={card}
+                  />
+                  <h6 className="card">XXXX-XXXXX113</h6>
+                </div>
+              </div>
+            )}
+            {loadError && (
+              <div className="payment-method-error-div">
+                <h4 className="payment-method-error-heading">
+                  You must choose a payment method
+                </h4>
+              </div>
+            )}
           </div>
         </div>
         <div className="checkout-wrapper">
@@ -90,7 +157,9 @@ function Order() {
                 You are ordering: {product} for {price}$
               </h3>
             </div>
-            <button className="checkout-button">Purchase Now</button>
+            <button onClick={() => completeOrder()} className="checkout-button">
+              Purchase Now
+            </button>
           </div>
         </div>
       </div>

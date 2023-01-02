@@ -8,6 +8,7 @@ import "./dashboard.scss";
 function Dashboard() {
   const [error, setError] = useState("");
   const [finalAddress, setFinalAddress] = useState("");
+  const [order, setOrder] = useState("");
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   const db = firestore;
@@ -37,6 +38,16 @@ function Dashboard() {
     fullAddress();
   }, []);
 
+  useEffect(() => {
+    async function getOrder() {
+      const userRef = db.collection("users").doc(currentUser.uid);
+      await userRef.get("Order").then((doc) => {
+        setOrder(doc.data()["Order"]);
+      });
+    }
+    getOrder();
+  }, []);
+
   async function handleLogout() {
     setError("");
 
@@ -60,11 +71,11 @@ function Dashboard() {
           </h3>
           <a href="/address" className="address-a">
             <h3 className="address-heading">
-              <b>Address:</b> {finalAddress}
+              <b className="address-b">Address:</b> {finalAddress}
             </h3>
           </a>
           <h3 className="orders-heading">
-            <b>My Orders:</b>
+            <b>My Orders: {order}</b>
           </h3>
         </div>
       </div>

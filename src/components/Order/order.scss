@@ -23,8 +23,10 @@
       .profile-heading {
       }
       .address-heading {
+        text-align: justify;
       }
       .payment-method-div {
+        position: relative;
         display: flex;
         gap: 10px;
         align-items: center;
@@ -43,7 +45,46 @@
           .arrow-image {
             width: 15px;
             margin-right: 10px;
+            transition: 0.25s;
+          }
+        }
+        .payment-method-cards-div {
+          position: absolute;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          left: 40%;
+          top: 65%;
+          background-color: white;
+          border: 2px solid grey;
+          border-radius: 10px;
+          .credit-card-div {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            padding-right: 10px;
             transition: 0.5s ease;
+            &:hover {
+              background-color: rgba(128, 128, 128, 0.473);
+            }
+            .credit-card-image {
+              width: 50px;
+              object-fit: contain;
+            }
+            .card {
+              font-size: 16px;
+              margin: 0px;
+            }
+          }
+        }
+        .payment-method-error-div {
+          border: 1px solid red;
+          border-radius: 10px;
+          background-color: rgba(214, 42, 42, 0.308);
+          .payment-method-error-heading {
+            margin: 0px;
+            padding: 20px;
+            color: rgb(223, 41, 41);
           }
         }
       }
