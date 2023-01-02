@@ -1,7 +1,7 @@
 .super-div {
   .navbar-main-div {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     .image-div {
       margin-left: 10vw;
@@ -11,12 +11,38 @@
         width: 150px;
       }
     }
+    .logged-super-div {
+      display: flex;
+      gap: 50px;
+      margin-right: 100px;
+      .logged-in-div {
+        background-color: #5cce5e;
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        .loggen-in-a {
+          text-decoration: none;
+          color: #262626;
+          font-size: 14px;
+        }
+      }
+      .sign-out-div {
+        cursor: pointer;
+        background-color: #5cce5e;
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        .sign-out-heading {
+          color: #262626;
+          font-size: 22px;
+        }
+      }
+    }
 
     .log-sign-div {
       display: flex;
       justify-content: flex-end;
       width: 100vw;
-      margin-right: 150px;
       gap: 50px;
 
       .login-a {
@@ -204,6 +230,9 @@
     .image-div.image-div {
       margin-left: 0px;
     }
+    .logged-super-div.logged-super-div {
+      margin-right: 0px;
+    }
   }
   .log-sign-div.log-sign-div {
     flex-direction: column;
@@ -211,5 +240,31 @@
     align-items: center;
     margin-right: 0px !important;
     gap: 20px !important;
+  }
+  .slogan-heading1.slogan-heading1.slogan-heading1 {
+    top: 10px;
+    margin-left: 5vw !important;
+    white-space: normal !important;
+  }
+  .slogan-heading2.slogan-heading2.slogan-heading2 {
+    margin-left: 5vw !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .veggie-basket.veggie-basket {
+    opacity: 0;
+  }
+  .slogan-heading1.slogan-heading1 {
+    margin-left: 20vw !important;
+  }
+  .slogan-heading2.slogan-heading2 {
+    margin-left: 20vw !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .slogan-heading2.slogan-heading2 {
+    white-space: normal !important;
   }
 }

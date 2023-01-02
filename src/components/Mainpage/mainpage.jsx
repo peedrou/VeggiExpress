@@ -13,7 +13,7 @@ import { usePriceUpdate } from "../../contexts/priceContext";
 import "./mainpage.scss";
 
 function Mainpage() {
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
   const [logged, setLogged] = useState(false);
   const PriceChange = usePriceUpdate();
 
@@ -26,6 +26,11 @@ function Mainpage() {
       console.log(1);
     }
   }, []);
+
+  async function handleLogout() {
+    await logout();
+    window.location.reload();
+  }
 
   return (
     <div className="super-div">
@@ -53,13 +58,20 @@ function Mainpage() {
             </a>
           </div>
         )}
-        {logged && (
-          <div className="logged-in-div">
-            <a href="/dashboard" className="loggen-in-a">
-              <h2>Logged In</h2>
-            </a>
-          </div>
-        )}
+        <div className="logged-super-div">
+          {logged && (
+            <div className="logged-in-div">
+              <a href="/dashboard" className="loggen-in-a">
+                <h2>My Profile</h2>
+              </a>
+            </div>
+          )}
+          {logged && (
+            <div className="sign-out-div" onClick={() => handleLogout()}>
+              <h1 className="sign-out-heading">Sign Out</h1>
+            </div>
+          )}
+        </div>
       </div>
       <div className="slogan-option-wrapper">
         <img className="veggie-basket" src={veggie} />
