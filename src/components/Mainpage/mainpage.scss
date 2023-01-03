@@ -16,10 +16,15 @@
       gap: 50px;
       margin-right: 100px;
       .logged-in-div {
+        cursor: pointer;
         background-color: #5cce5e;
         border-radius: 10px;
         padding-left: 10px;
         padding-right: 10px;
+        transition: 0.5s ease;
+        &:hover {
+          background-color: #93f095;
+        }
         .loggen-in-a {
           text-decoration: none;
           color: #262626;
@@ -32,6 +37,10 @@
         border-radius: 10px;
         padding-left: 10px;
         padding-right: 10px;
+        transition: 0.5s ease;
+        &:hover {
+          background-color: #93f095;
+        }
         .sign-out-heading {
           color: #262626;
           font-size: 22px;
@@ -54,16 +63,20 @@
           cursor: pointer;
           background-color: #5cce5e;
           border-radius: 10px;
-          padding: 15px;
+          padding: 10px;
+          transition: 0.5s ease;
 
           &:hover + .grapesfruit {
             right: 100%;
+          }
+          &:hover {
+            background-color: #93f095;
           }
         }
         .grapesfruit {
           position: absolute;
           height: auto;
-          width: 45px;
+          width: 40px;
           bottom: 25%;
           right: 25%;
           transition: right 0.5s ease-in-out;
@@ -79,11 +92,15 @@
           cursor: pointer;
           background-color: #5cce5e;
           border-radius: 10px;
-          padding: 15px;
+          padding: 10px;
+          transition: 0.5s ease;
 
           &:hover + .bananafruit {
             right: -27%;
             transform: rotate(10deg);
+          }
+          &:hover {
+            background-color: #93f095;
           }
         }
         .bananafruit {
@@ -107,13 +124,13 @@
     flex-direction: column;
     gap: 200px;
     margin-top: 50px;
-    .veggie-basket {
+    .person {
       position: absolute;
       width: 100%;
       height: auto;
-      max-width: 450px;
-      bottom: 150px;
-      z-index: 1;
+      max-width: 650px;
+      bottom: 0px;
+      z-index: 0;
     }
     .slogan-div {
       position: relative;
@@ -252,7 +269,7 @@
 }
 
 @media (max-width: 1200px) {
-  .veggie-basket.veggie-basket {
+  .person.person {
     opacity: 0;
   }
   .slogan-heading1.slogan-heading1 {

@@ -1,6 +1,6 @@
 import Contact from "../Contact/contact";
 import Footer from "../Footer/footer";
-import veggie from "../../images/veggie-basket.png";
+import person from "../../images/person.png";
 import veggieicon from "../../images/veggie-icon.png";
 import veggiexpress from "../../images/veggiexpresss.png";
 import bananafruit from "../../images/bananafruit.png";
@@ -80,7 +80,7 @@ function Mainpage() {
         </div>
       </div>
       <div className="slogan-option-wrapper">
-        <img className="veggie-basket" src={veggie} />
+        <img className="person" src={person} />
         <div className="slogan-div">
           <h1 className="slogan-heading1">One click away...</h1>
           <h1 className="slogan-heading2">
