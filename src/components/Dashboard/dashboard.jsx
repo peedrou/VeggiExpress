@@ -1,17 +1,27 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext.js";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { firestore } from "../../firebase.js";
 import "./dashboard.scss";
 
 function Dashboard() {
+  const location = useLocation();
   const [error, setError] = useState("");
   const [finalAddress, setFinalAddress] = useState("");
   const [order, setOrder] = useState("");
+  const [loadStatus, setLoadStatus] = useState(false);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   const db = firestore;
+
+  useEffect(() => {
+    const status = new URLSearchParams(location.search).get("status");
+    if (status == "success") {
+      setLoadStatus(true);
+    }
+  }, []);
 
   useEffect(() => {
     async function fullAddress() {
@@ -62,6 +72,7 @@ function Dashboard() {
     <div className="dashboard-main-div">
       <div className="profile-main-wrapper">
         <h1 className="profile-heading">Profile</h1>
+        {loadStatus && <h4 className="success-order">Order was successful!</h4>}
         {error == "Failed to Log Out" && (
           <h2 className="failed-to-logout">{error}</h2>
         )}

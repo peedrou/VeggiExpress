@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext.js";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { firestore } from "../../firebase.js";
 import veggiexpress from "../../images/veggiexpresss.png";
 import arrow from "../../images/arrow.png";
@@ -11,6 +12,7 @@ import "./order.scss";
 function Order() {
   const [isUpsideDown, setIsUpsideDown] = useState(false);
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
   const [finalAddress, setFinalAddress] = useState("");
   const [price, setPrice] = useState(0);
   const [product, setProduct] = useState("");
@@ -70,7 +72,10 @@ function Order() {
         const docRef = db.collection("users").doc(currentUser.uid);
         const updatedData = { Order: product };
         await docRef.update(updatedData);
-        window.location.reload();
+        navigate({
+          pathname: "/dashboard",
+          search: `?status=success`,
+        });
       } catch (error) {
         console.log(error);
       }

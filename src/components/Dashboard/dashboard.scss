@@ -7,11 +7,18 @@
   .profile-main-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
     border: 1px solid grey;
     border-radius: 6px;
     min-width: 400px;
     margin-top: 25vh;
     .profile-heading {
+    }
+    .success-order {
+      border: 1px rgb(5, 204, 5) solid;
+      background-color: rgba(87, 209, 87, 0.521);
+      width: fit-content;
+      padding: 7px;
     }
     .profile-info-wrapper {
       .email-heading {
