@@ -14,7 +14,14 @@ import "./mainpage.scss";
 function Mainpage() {
   const { currentUser, logout } = useAuth();
   const [logged, setLogged] = useState(false);
+  const [orderRedirect, setOrderRedirect] = useState(false);
   const Navigate = useNavigate();
+
+  useEffect(() => {
+    if (logged) {
+      setOrderRedirect(false);
+    }
+  }, []);
 
   useEffect(() => {
     try {
@@ -46,6 +53,11 @@ function Mainpage() {
         </div>
         {logged == false && (
           <div className="log-sign-div">
+            {orderRedirect && (
+              <div className="log-first">
+                You must log in or sign up before ordering!
+              </div>
+            )}
             <a href="/login" className="login-a">
               <h2 className="log-in">Log In</h2>
               <img
@@ -89,7 +101,15 @@ function Mainpage() {
         </div>
         <div className="options-div">
           <a
-            onClick={() => handleRedirect(4.99, "One Basket")}
+            onClick={() => {
+              orderRedirect == false
+                ? logged
+                  ? handleRedirect(4.99, "One Basket")
+                  : setOrderRedirect(true)
+                : logged
+                ? handleRedirect(4.99, "One Basket")
+                : setOrderRedirect(true);
+            }}
             className="order-once-a"
           >
             <div className="single-purchase-button-wrapper">
@@ -100,7 +120,15 @@ function Mainpage() {
             </div>
           </a>
           <a
-            onClick={() => handleRedirect(2.99, "Monthly Delivery")}
+            onClick={() => {
+              orderRedirect == false
+                ? logged
+                  ? handleRedirect(2.99, "Monthly Delivery")
+                  : setOrderRedirect(true)
+                : logged
+                ? handleRedirect(2.99, "Monthly Delivery")
+                : setOrderRedirect(true);
+            }}
             className="order-month-a"
           >
             <div className="membership-button-wrapper">

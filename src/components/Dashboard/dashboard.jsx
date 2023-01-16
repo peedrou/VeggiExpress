@@ -43,7 +43,11 @@ function Dashboard() {
         postalCode = doc.data()["PostalCode"];
       });
 
-      setFinalAddress(`${street}, ${postalCode} ${city}, ${country}`);
+      if (`${street}, ${postalCode} ${city}, ${country}` == `,  , `) {
+        setFinalAddress("");
+      } else {
+        setFinalAddress(`${street}, ${postalCode} ${city}, ${country}`);
+      }
     }
     fullAddress();
   }, []);

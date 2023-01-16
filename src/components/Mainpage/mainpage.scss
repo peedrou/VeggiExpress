@@ -51,8 +51,18 @@
     .log-sign-div {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
       width: 100vw;
       gap: 50px;
+
+      .log-first {
+        border: 1px solid red;
+        border-radius: 10px;
+        background-color: rgba(214, 42, 42, 0.308);
+        color: rgb(223, 41, 41);
+        height: fit-content;
+        padding: 8px;
+      }
 
       .login-a {
         position: relative;
@@ -259,6 +269,9 @@
     align-items: center;
     margin-right: 0px !important;
     gap: 20px !important;
+    .log-first.log-first {
+      margin-top: 20px;
+    }
   }
   .slogan-heading1.slogan-heading1.slogan-heading1 {
     top: 10px;
