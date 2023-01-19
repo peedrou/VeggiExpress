@@ -3,13 +3,13 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 const app = firebase.initializeApp({
-  apiKey: process.env.REACT_APP_APIKEY,
-  authDomain: process.env.REACT_APP_AUTHDOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASEURL,
-  projectId: process.env.REACT_APP_PROJECTID,
-  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-  messagingSenderId: process.env.REACT_APP_SENDERID,
-  appId: process.env.REACT_APP_APPID,
+  apiKey: "AIzaSyCNcjQC6KdwcZ29BEdO_XgmWS44YQc6JmA",
+  authDomain: "veggiexpress-74a47.firebaseapp.com",
+  databaseURL: "https://veggiexpress-74a47-default-rtdb.firebaseio.com",
+  projectId: "veggiexpress-74a47",
+  storageBucket: "veggiexpress-74a47.appspot.com",
+  messagingSenderId: "426954000328",
+  appId: "1:426954000328:web:1aafe5206e0817b482a2fd",
 });
 
 export const auth = app.auth();
