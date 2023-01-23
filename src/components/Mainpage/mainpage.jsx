@@ -37,6 +37,16 @@ function Mainpage() {
     };
   });
 
+  //same as above but triggers on first render
+  useEffect(() => {
+    const totalWidth = window.innerWidth;
+    if (totalWidth <= 800) {
+      setBurgerMenu(true);
+    } else {
+      setBurgerMenu(false);
+    }
+  }, []);
+
   useEffect(() => {
     if (!pushMenu) {
       setTransformMenu(-250);
@@ -79,6 +89,15 @@ function Mainpage() {
         <div className="image-div">
           <img className="logo" alt="placeholder" src={veggiexpress} />
         </div>
+        {burgerMenu && (
+          <>
+            {orderRedirect && (
+              <div className="burger-log-first">
+                You must log in or sign up before ordering!
+              </div>
+            )}
+          </>
+        )}
         {!burgerMenu && (
           <>
             {logged == false && (
