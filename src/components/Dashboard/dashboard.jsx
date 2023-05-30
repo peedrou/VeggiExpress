@@ -4,7 +4,13 @@ import { useAuth } from "../../contexts/AuthContext.js";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { firestore } from "../../firebase.js";
-import "./dashboard.scss";
+import veggiexpress from "../../images/veggiexpresss.png";
+
+import {
+  CalendarDaysIcon,
+  CreditCardIcon,
+  UserCircleIcon,
+} from "@heroicons/react/20/solid";
 
 function Dashboard() {
   const location = useLocation();
@@ -73,34 +79,74 @@ function Dashboard() {
     }
   }
   return (
-    <div className="dashboard-main-div">
-      <div className="profile-main-wrapper">
-        <h1 className="profile-heading">Profile</h1>
-        {loadStatus && <h4 className="success-order">Order was successful!</h4>}
-        {error == "Failed to Log Out" && (
-          <h2 className="failed-to-logout">{error}</h2>
-        )}
-        <div className="profile-info-wrapper">
-          <h3 className="email-heading">
-            <b>Email:</b> {currentUser.email}
-          </h3>
-          <a href="/address" className="address-a">
-            <h3 className="address-heading">
-              <b className="address-b">Address:</b> {finalAddress}
-            </h3>
-          </a>
-          <h3 className="orders-heading">
-            <b>My Orders: {order}</b>
-          </h3>
+    <div className="flex flex-col gap-12 items-center justify-center w-screen h-screen">
+      <a href="/">
+        <img
+          src={veggiexpress}
+          alt="image not found"
+          className="veggiexpress-login-image"
+        />
+      </a>
+      <div className="lg:col-start-3 lg:row-end-1">
+        <div className="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
+          <dl className="flex flex-wrap">
+            <div className="flex-auto pl-6 pt-6">
+              <dt className="text-start text-sm font-semibold leading-6 text-gray-900">
+                Profile
+              </dt>
+            </div>
+
+            <div className="mt-6 flex w-full flex-none gap-x-4 border-t border-gray-900/5 px-6 pt-6">
+              <dt className="flex-none">
+                <UserCircleIcon
+                  className="h-6 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </dt>
+              <dd className="text-sm font-medium leading-6 text-gray-900">
+                {currentUser.email}
+              </dd>
+            </div>
+            <div className="mt-4 flex w-full flex-none gap-x-4 px-6">
+              <dt className="flex-none">
+                <CalendarDaysIcon
+                  className="h-6 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </dt>
+              <dd className="text-sm leading-6 text-gray-500">
+                {finalAddress}
+              </dd>
+            </div>
+            <div className="mt-4 flex w-full flex-none gap-x-4 px-6">
+              <dt className="flex-none">
+                <CreditCardIcon
+                  className="h-6 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </dt>
+              <dd className="text-sm leading-6 text-gray-500">{order}</dd>
+            </div>
+          </dl>
+          <div className="flex items-center justify-center">
+            <div className="mt-6 border-t border-gray-900/5 px-6 py-6">
+              <a
+                href="/address"
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Change Address
+              </a>
+            </div>
+            <div className="mt-6 border-t border-gray-900/5 px-6 py-6">
+              <button
+                onClick={() => handleLogout()}
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="buttons-wrapper">
-        <a href="/" className="home-a">
-          <button className="home-button">Back to Home</button>
-        </a>
-        <button className="logout-button" onClick={() => handleLogout()}>
-          Log Out
-        </button>
       </div>
     </div>
   );
