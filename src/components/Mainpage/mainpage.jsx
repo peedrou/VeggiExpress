@@ -14,19 +14,17 @@ const navigation = [
 ];
 
 function MainSection() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { currentUser, logout } = useAuth();
   const [logged, setLogged] = useState(false);
   const [orderRedirect, setOrderRedirect] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
-  const [pushMenu, setPushMenu] = useState(false);
-  const [transformMenu, setTransformMenu] = useState(0);
+  const [openMenu, setOpenMenu] = useState(false);
   const Navigate = useNavigate();
 
   useEffect(() => {
     let cb = function () {
       const totalWidth = window.innerWidth;
-      if (totalWidth <= 800) {
+      if (totalWidth <= 1023) {
         setBurgerMenu(true);
       } else {
         setBurgerMenu(false);
@@ -41,20 +39,12 @@ function MainSection() {
 
   useEffect(() => {
     const totalWidth = window.innerWidth;
-    if (totalWidth <= 800) {
+    if (totalWidth <= 1023) {
       setBurgerMenu(true);
     } else {
       setBurgerMenu(false);
     }
   }, []);
-
-  useEffect(() => {
-    if (!pushMenu) {
-      setTransformMenu(-250);
-    } else {
-      setTransformMenu(0);
-    }
-  });
 
   useEffect(() => {
     if (logged) {
@@ -86,63 +76,152 @@ function MainSection() {
 
   return (
     <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
-        <nav
-          className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-          aria-label="Global"
-        >
+      {!burgerMenu && (
+        <header className="absolute inset-x-0 top-0 z-50">
+          <nav
+            className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+            aria-label="Global"
+          >
+            <div className="flex lg:flex-1">
+              <a href="#" className="-m-1.5 p-1.5">
+                <img className="h-24 w-auto" src={veggiexpress} alt="" />
+              </a>
+            </div>
+
+            {logged && (
+              <div className="hidden lg:flex lg:gap-x-12">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            )}
+            {!logged && (
+              <div className="hidden lg:flex lg:gap-x-12">
+                {navigation.slice(1).map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            )}
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              {!logged && (
+                <div className="flex justify-between gap-6">
+                  <a
+                    href="/signup"
+                    className="text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    Sign Up
+                  </a>
+                  <a
+                    href="/login"
+                    className="text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    Log in <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              )}
+              {logged && (
+                <a
+                  href="#"
+                  className="text-sm font-semibold leading-6 text-gray-900"
+                  onClick={() => handleLogout()}
+                >
+                  Sign Out <span aria-hidden="true">&rarr;</span>
+                </a>
+              )}
+            </div>
+          </nav>
+        </header>
+      )}
+      {burgerMenu && (
+        <nav className="container flex justify-between items-center px-8 py-8 mx-auto bg-white">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <img className="h-24 w-auto" src={veggiexpress} alt="" />
             </a>
           </div>
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(true)}
-            ></button>
-          </div>
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            {!logged && (
-              <div className="flex justify-between gap-6">
-                <a
-                  href="/signup"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Sign Up
-                </a>
-                <a
-                  href="/login"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Log in <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-            )}
-            {logged && (
-              <a
-                href="#"
-                className="text-sm font-semibold leading-6 text-gray-900"
-                onClick={() => handleLogout()}
-              >
-                Sign Out <span aria-hidden="true">&rarr;</span>
-              </a>
-            )}
+          <div className="flex items-center gap-8">
+            <div
+              className="cursor-pointer space-y-2"
+              onClick={() => setOpenMenu(!openMenu)}
+            >
+              <span className="block w-8 h-0.5 bg-gray-600 animate-pulse"></span>
+              <span className="block w-8 h-0.5 bg-gray-600 animate-pulse"></span>
+              <span className="block w-8 h-0.5 bg-gray-600 animate-pulse"></span>
+            </div>
+            <div>
+              {openMenu && (
+                <div className="flex flex-col gap-20">
+                  {logged && (
+                    <div className="flex flex-col gap-8">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                  {!logged && (
+                    <div className="flex flex-col gap-8">
+                      {navigation.slice(1).map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                  <div>
+                    {!logged && (
+                      <div className="flex flex-col justify-between gap-6">
+                        <a
+                          href="/signup"
+                          className="text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          Sign Up
+                        </a>
+                        <a
+                          href="/login"
+                          className="text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          Log in <span aria-hidden="true">&rarr;</span>
+                        </a>
+                      </div>
+                    )}
+                    {logged && (
+                      <a
+                        href="#"
+                        className="text-sm font-semibold leading-6 text-gray-900"
+                        onClick={() => handleLogout()}
+                      >
+                        Sign Out <span aria-hidden="true">&rarr;</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </nav>
-      </header>
+      )}
       <div className="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14">
         <div
           className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:-mr-80 lg:-mr-96"

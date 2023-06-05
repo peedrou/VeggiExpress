@@ -8,7 +8,7 @@ import veggiexpress from "../../images/veggiexpresss.png";
 
 import {
   CalendarDaysIcon,
-  CreditCardIcon,
+  ShoppingCartIcon,
   UserCircleIcon,
 } from "@heroicons/react/20/solid";
 
@@ -120,7 +120,7 @@ function Dashboard() {
             </div>
             <div className="mt-4 flex w-full flex-none gap-x-4 px-6">
               <dt className="flex-none">
-                <CreditCardIcon
+                <ShoppingCartIcon
                   className="h-6 w-5 text-gray-400"
                   aria-hidden="true"
                 />

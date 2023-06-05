@@ -72,8 +72,12 @@ function Footer() {
     <footer className="bg-white" aria-labelledby="footer-heading">
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="flex flex-col space-y-8">
-            <img className="h-4" src={veggiexpress} alt="Company name" />
+          <div className="flex flex-col justify-center items-center space-y-8">
+            <img
+              className="h-[100px] w-[120px]"
+              src={veggiexpress}
+              alt="Company name"
+            />
             <p className="text-sm leading-6 text-gray-900">
               Passionately driven to bring the freshest fruits and veggetables
             </p>
