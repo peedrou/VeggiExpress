@@ -186,7 +186,8 @@ function Order() {
     setProduct(finalProduct);
   }, []);
 
-  async function completeOrder() {
+  async function completeOrder(e) {
+    e.preventDefault();
     try {
       const docRef = db.collection("users").doc(currentUser.uid);
       const updatedData = { Order: product };
@@ -207,7 +208,7 @@ function Order() {
           Shopping Cart
         </h1>
 
-        <form className="mt-12" onSubmit={() => completeOrder()}>
+        <form className="mt-12" onSubmit={(e) => completeOrder(e)}>
           <section aria-labelledby="summary-heading" className="mt-10">
             <div className="mb-4">
               <dl className="space-y-4">

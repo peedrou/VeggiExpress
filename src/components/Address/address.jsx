@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext.js";
 import { firestore } from "../../firebase.js";
 import { useState } from "react";
+import veggiexpress from "../../images/veggiexpresss.png";
 
 function Address() {
   const { currentUser } = useAuth();
@@ -68,7 +69,14 @@ function Address() {
   }
 
   return (
-    <div className="flex items-center justify-center w-screen h-screen">
+    <div className="flex flex-col gap-8 items-center justify-center w-screen h-screen">
+      <a href="/">
+        <img
+          src={veggiexpress}
+          alt="image not found"
+          className="veggiexpress-login-image"
+        />
+      </a>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
